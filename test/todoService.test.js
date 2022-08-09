@@ -8,7 +8,11 @@ const { createSandbox } = require('sinon');
 describe('todoService', () => {
 
   describe('functions', () => {
-
+    
+    /**
+     * O sandbox funciona como um ambiente virtual
+     * onde podemos editar os comportamentos do teste
+     */
     let sandbox;
     before(() => {
       sandbox = new createSandbox();
@@ -16,6 +20,12 @@ describe('todoService', () => {
 
     describe('list', () => {
 
+      /**
+       * dados mock são uteis quando sabemos o que irá
+       * retornar de algum lugar seja ele um banco ou uma api
+       * pois assim conseguimos validar sem ter de fazer
+       * o percurso do codigo
+       */
       const mockDatabase = [
         {
           name: 'Narutinho',
@@ -25,6 +35,11 @@ describe('todoService', () => {
         }
       ];
 
+
+      /**
+       * com o beforeEach inicializando algo que será utilizado
+       * por todos os testes nesse escopo.
+       */
       let todoService;
       beforeEach(() => {
         const dependecies = {
@@ -61,6 +76,7 @@ describe('todoService', () => {
           when: ''
         })
 
+        // deleta uma propriedade do objeto
         Reflect.deleteProperty(data, "id")
 
         const expected = {

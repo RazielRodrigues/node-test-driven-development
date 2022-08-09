@@ -30,6 +30,11 @@ describe('todoRepository', () => {
       const functionName = "find"
       const expectedReturn = mockDatabase
 
+      /**
+       * Com o stub é possivel editar o comportamento
+       * de uma função, retornando um mock ou até mesmo
+       * a execução interna da função
+       */
       sandbox.stub(
         todoRepository.schedule,
         functionName
